@@ -1,0 +1,33 @@
+import random
+
+def start_game():
+
+    print("""----------------------------------------\nWelcome to Wilson's Number Guessing Game!\n----------------------------------------\n\n""")
+    
+    tries = []
+    starting = "yes"
+    while starting.lower() == "yes":
+        attempts = 1
+        num = random.randint(1,10)
+        while True:
+            num_guess = int(input("Take a guess (1-10): "))
+            if num_guess > num:
+                print("It's lower.")
+                attempts += 1
+                continue
+            elif num_guess < num:
+                print("It's higher.")
+                attempts += 1
+                continue
+            else:
+                print("Got it. It took you {} tries".format(attempts))           
+                tries.append(attempts) 
+                break
+        starting = input("Do you want to play again? (Yes/No) ")
+        if starting.lower() == "yes":
+            print("Your best score is:", min(tries))
+            continue
+    else:
+        print("Game Over") 
+
+start_game()
